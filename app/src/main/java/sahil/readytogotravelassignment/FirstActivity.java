@@ -1,5 +1,7 @@
 package sahil.readytogotravelassignment;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,30 +16,49 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FirstActivity extends AppCompatActivity {
-    PrefernceHandler handler;
+    PreferenceHandler handler;
     private int boardingLayouts[];
     ViewPager onBoardPager;
     private TextView dots[];
-    private Button sampleButton;
+    private FloatingActionButton sampleButton;
     LinearLayout dotsLayout;
     OnboardPagerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        handler = new PrefernceHandler(this);
+        handler = new PreferenceHandler(this);
         if (!handler.isFirstLogin())
         {
             Toast.makeText(this,"It's not the first login",Toast.LENGTH_SHORT).show();
         }
+        else
+        {
+            //set preference here
+        }
         boardingLayouts=new int[]{R.layout.on_board_screen_1,R.layout.on_board_screen_b,R.layout.onboard_screen_c};
         onBoardPager=(ViewPager) findViewById(R.id.onBoardPager);
         dotsLayout=(LinearLayout) findViewById(R.id.dots);
-        sampleButton=(Button) findViewById(R.id.sampleButton);
+        sampleButton=(FloatingActionButton) findViewById(R.id.sampleButton);
         addShiftingDots(0);
         adapter=new OnboardPagerAdapter();
         onBoardPager.setAdapter(adapter);
         onBoardPager.addOnPageChangeListener(listener);
+        sampleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int curPage=getCurrentPage();
+                if(curPage<=boardingLayouts.length-1)
+                {
+                    onBoardPager.setCurrentItem(curPage);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(FirstActivity.this,LoginActivity.class));
+                }
+            }
+        });
     }
 
     private void addShiftingDots(int pageNumber) {
@@ -58,7 +79,7 @@ public class FirstActivity extends AppCompatActivity {
             dotsLayout.addView(dots[i]);
         }
     }
-    private int getItem(int i)
+    private int getCurrentPage()
     {
         return onBoardPager.getCurrentItem()+1;
     }
@@ -70,7 +91,6 @@ public class FirstActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-
         }
 
         @Override

@@ -7,13 +7,15 @@ import android.content.SharedPreferences;
  * Created by SAHIL SINGLA on 11-06-2017.
  */
 
-public class PrefernceHandler {
+public class PreferenceHandler {
     SharedPreferences preferences;
     SharedPreferences.Editor prefEditor;
     Context context;
     private final String prefName="ReadyToGoPreferences";
-    public final String FirstLoginPrefs="FirstTime";
-    public PrefernceHandler(Context c)
+    public static final String FirstLoginPrefs="FirstTime";
+    public static final String name="Name";
+    public static final String loginStatus="loginStatus";
+    public PreferenceHandler(Context c)
     {
         context=c;
         preferences=c.getSharedPreferences(prefName, Context.MODE_PRIVATE);
@@ -27,5 +29,14 @@ public class PrefernceHandler {
     public boolean isFirstLogin()
     {
         return preferences.getBoolean(FirstLoginPrefs,true);
+    }
+    public void setPreference(String s, String value)
+    {
+        prefEditor.putString(s,value);
+        prefEditor.commit();
+    }
+    public String getPreferences(String prefName)
+    {
+        return preferences.getString(prefName,null);
     }
 }
