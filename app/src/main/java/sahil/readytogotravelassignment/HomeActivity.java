@@ -1,5 +1,6 @@
 package sahil.readytogotravelassignment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -37,7 +38,8 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(HomeActivity.this,FinalActivity.class));
+                finish();
             }
         });
 
@@ -153,18 +155,29 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.option1) {
+            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
+            finish();
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.option2) {
+            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
+            finish();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.option3) {
+            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
+            finish();
 
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.option4) {
+            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void profileEdit()
+    {
+        startActivity(new Intent(HomeActivity.this,FinalActivity.class));
     }
 }

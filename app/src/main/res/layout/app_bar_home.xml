@@ -18,8 +18,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:elevation="3dp" />
-
+            app:titleTextColor="#ffffffff"
+            android:title="ekmdfwkl"/>
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"

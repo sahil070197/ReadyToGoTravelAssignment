@@ -17,7 +17,8 @@ public class LoginActivity extends AppCompatActivity {
         String status=handler.getPreferences(PreferenceHandler.loginStatus);
         if(status!=null && !(status.compareTo("true")==0))
         {
-            //Intent to next activity
+            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+            finish();
         }
         setContentView(R.layout.activity_login);
         login=(Button) findViewById(R.id.login);

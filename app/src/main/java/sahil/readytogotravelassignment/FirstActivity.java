@@ -86,11 +86,11 @@ public class FirstActivity extends AppCompatActivity {
     ViewPager.OnPageChangeListener listener=new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            addShiftingDots(position);
         }
 
         @Override
         public void onPageSelected(int position) {
+            addShiftingDots(position);
         }
 
         @Override
