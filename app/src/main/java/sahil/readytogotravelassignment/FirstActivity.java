@@ -23,6 +23,9 @@ public class FirstActivity extends AppCompatActivity {
     private FloatingActionButton sampleButton;
     LinearLayout dotsLayout;
     OnboardPagerAdapter adapter;
+    /*
+    * Activity that is launched on very first start
+    * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +33,20 @@ public class FirstActivity extends AppCompatActivity {
         handler = new PreferenceHandler(this);
         if (!handler.isFirstLogin())
         {
+            /*
+            * If it is not the first launch then directly go to login page
+            * */
             startActivity(new Intent(FirstActivity.this,LoginActivity.class));
             finish();
         }
         else
         {
+            /*
+            * Update shared Preferences in either case
+            * */
             handler.setFirstLogin();
         }
+
         boardingLayouts=new int[]{R.layout.on_board_screen_1,R.layout.on_board_screen_b,R.layout.onboard_screen_c};
         onBoardPager=(ViewPager) findViewById(R.id.onBoardPager);
         dotsLayout=(LinearLayout) findViewById(R.id.dots);
@@ -45,6 +55,7 @@ public class FirstActivity extends AppCompatActivity {
         adapter=new OnboardPagerAdapter();
         onBoardPager.setAdapter(adapter);
         onBoardPager.addOnPageChangeListener(adapter);
+        //Listener for shifting onboarding screen and moving to login screen
         sampleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,13 +74,16 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     private void addShiftingDots(int pageNumber) {
+
+        /*
+        * Function to change color of active dot at screen bottom, to denote currently active activity
+        * */
         dots=new TextView[boardingLayouts.length];
         int activeColor[]=getResources().getIntArray(R.array.array_dot_active);
         int inactive[]=getResources().getIntArray(R.array.array_dot_inactive);
         dotsLayout.removeAllViews();
         for(int i=0;i<dots.length;i++)
         {
-
             dots[i]=new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(30);
@@ -86,6 +100,9 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     public class OnboardPagerAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
+        /*
+        * Adapter to handle page movements
+        * */
         OnboardPagerAdapter()
         {
 
