@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 /**
  * Created by SAHIL SINGLA on 11-06-2017.
+ * Activity to store static data for reference
  */
 
 public class PreferenceHandler {

@@ -23,6 +23,15 @@ import android.view.ViewGroup;
 import android.os.Handler;
 import android.widget.Toast;
 
+
+/*
+* The screen that opens up after a successful login
+* Consists of three tabs, Containing sample data
+* and
+* A navigation drawer with sample options,
+* Image and edit profile option
+* A floating action button that leads to certain activity, Displaying most impotant data in Toolbar.
+* */
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,TabLayout.OnTabSelectedListener,ViewPager.OnPageChangeListener {
 
