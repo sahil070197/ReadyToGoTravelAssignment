@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         phone=(EditText) findViewById(R.id.phone);
         /*
         * Check validity of input upon onClick and if valid, take to home screen
-        * Update the shared prefernces with details of user logged in
+        * Update the shared preferences with details of user logged in
         * */
         login.setOnClickListener(new View.OnClickListener() {
             @Override
