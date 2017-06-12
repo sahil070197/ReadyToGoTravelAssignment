@@ -30,11 +30,12 @@ public class FirstActivity extends AppCompatActivity {
         handler = new PreferenceHandler(this);
         if (!handler.isFirstLogin())
         {
-            Toast.makeText(this,"It's not the first login",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(FirstActivity.this,LoginActivity.class));
+            finish();
         }
         else
         {
-            //set preference here
+            handler.setFirstLogin();
         }
         boardingLayouts=new int[]{R.layout.on_board_screen_1,R.layout.on_board_screen_b,R.layout.onboard_screen_c};
         onBoardPager=(ViewPager) findViewById(R.id.onBoardPager);
@@ -43,7 +44,7 @@ public class FirstActivity extends AppCompatActivity {
         addShiftingDots(0);
         adapter=new OnboardPagerAdapter();
         onBoardPager.setAdapter(adapter);
-        onBoardPager.addOnPageChangeListener(listener);
+        onBoardPager.addOnPageChangeListener(adapter);
         sampleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,8 +55,8 @@ public class FirstActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(FirstActivity.this,LoginActivity.class));
+                    finish();
                 }
             }
         });
@@ -83,22 +84,8 @@ public class FirstActivity extends AppCompatActivity {
     {
         return onBoardPager.getCurrentItem()+1;
     }
-    ViewPager.OnPageChangeListener listener=new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        }
 
-        @Override
-        public void onPageSelected(int position) {
-            addShiftingDots(position);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
-    public class OnboardPagerAdapter extends PagerAdapter {
+    public class OnboardPagerAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
         OnboardPagerAdapter()
         {
 
@@ -125,6 +112,20 @@ public class FirstActivity extends AppCompatActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            addShiftingDots(position);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+
     }
 
 }

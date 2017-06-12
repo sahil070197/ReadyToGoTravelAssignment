@@ -18,12 +18,12 @@ public class PreferenceHandler {
     public PreferenceHandler(Context c)
     {
         context=c;
-        preferences=c.getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        preferences=c.getSharedPreferences(prefName, c.MODE_PRIVATE);
         prefEditor=preferences.edit();
     }
     public void setFirstLogin()
     {
-        prefEditor.putBoolean(FirstLoginPrefs,true);
+        prefEditor.putBoolean(FirstLoginPrefs,false);
         prefEditor.commit();
     }
     public boolean isFirstLogin()

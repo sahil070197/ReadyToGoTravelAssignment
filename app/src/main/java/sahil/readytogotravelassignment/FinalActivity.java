@@ -21,7 +21,6 @@ public class FinalActivity extends AppCompatActivity {
         bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FinalActivity.this,HomeActivity.class));
                 finish();
             }
         });
@@ -29,7 +28,6 @@ public class FinalActivity extends AppCompatActivity {
         finalFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FinalActivity.this,HomeActivity.class));
                 finish();
             }
         });
@@ -37,6 +35,6 @@ public class FinalActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+       finish();
     }
 }

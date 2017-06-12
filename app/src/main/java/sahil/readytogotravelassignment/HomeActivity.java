@@ -2,6 +2,7 @@ package sahil.readytogotravelassignment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -18,6 +19,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+
+import android.os.Handler;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,TabLayout.OnTabSelectedListener,ViewPager.OnPageChangeListener {
@@ -38,8 +42,7 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,FinalActivity.class));
-                finish();
+                startActivityForResult(new Intent(HomeActivity.this,FinalActivity.class),234);
             }
         });
 
@@ -129,14 +132,29 @@ public class HomeActivity extends AppCompatActivity
             return titles[position];
         }
     }
+    boolean doublePressed=false;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
+        if(doublePressed)
+        {
+            //Exit
+            finish();
+            System.exit(0);
+        }
+        Toast.makeText(this,"Press again to exit",Toast.LENGTH_SHORT).show();
+        doublePressed=true;
+        Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doublePressed=false;
+            }
+        }, 2000);
     }
 
     @Override
@@ -156,28 +174,21 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.option1) {
-            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
-            finish();
-
+            startActivityForResult(new Intent(HomeActivity.this,FinalActivity.class),234);
         } else if (id == R.id.option2) {
-            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
-            finish();
-
+            startActivityForResult(new Intent(HomeActivity.this,FinalActivity.class),234);
         } else if (id == R.id.option3) {
-            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
-            finish();
-
+            startActivityForResult(new Intent(HomeActivity.this,FinalActivity.class),234);
         } else if (id == R.id.option4) {
-            startActivity(new Intent(HomeActivity.this,FinalActivity.class));
-            finish();
+            startActivityForResult(new Intent(HomeActivity.this,FinalActivity.class),234);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void profileEdit()
+    public void profileEdit(View view)
     {
-        startActivity(new Intent(HomeActivity.this,FinalActivity.class));
+        startActivityForResult(new Intent(HomeActivity.this,FinalActivity.class),234);
     }
 }
