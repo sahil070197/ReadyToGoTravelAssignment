@@ -17,15 +17,22 @@ public class LoginActivity extends AppCompatActivity {
         String status=handler.getPreferences(PreferenceHandler.loginStatus);
         if(status!=null && (status.compareTo("true")==0))
         {
+            /**
+             * If the  user has already logged in directly take to home page.
+             */
+
             startActivity(new Intent(LoginActivity.this,HomeActivity.class));
             finish();
         }
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
         login=(Button) findViewById(R.id.login);
         name=(EditText) findViewById(R.id.name);
         phone=(EditText) findViewById(R.id.phone);
+        /*
+        * Check validity of input upon onClick and if valid, take to home screen
+        * Update the shared prefernces with details of user logged in
+        * */
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
