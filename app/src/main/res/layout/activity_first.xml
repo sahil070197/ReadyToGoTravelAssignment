@@ -4,7 +4,7 @@
     android:id="@+id/activity_first"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sahil.readytogotravelassignment.FirstActivity">
+    tools:context="sahil.quickNotes.FirstActivity">
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="400dp"

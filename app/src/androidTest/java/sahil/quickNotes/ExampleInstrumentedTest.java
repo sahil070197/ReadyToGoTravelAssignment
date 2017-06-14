@@ -1,4 +1,4 @@
-package sahil.readytogotravelassignment;
+package sahil.quickNotes;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("sahil.readytogotravelassignment", appContext.getPackageName());
+        assertEquals("sahil.quickNotes", appContext.getPackageName());
     }
 }

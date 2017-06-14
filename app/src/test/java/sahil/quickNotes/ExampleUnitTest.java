@@ -1,4 +1,4 @@
-package sahil.readytogotravelassignment;
+package sahil.quickNotes;
 
 import org.junit.Test;
 

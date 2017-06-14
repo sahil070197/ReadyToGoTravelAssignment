@@ -24,4 +24,8 @@
     <string name="title_activity_deletet_eba">deletetEba</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="final_activity_name">Sample Activity</string>
+    <string name="screen_one_text">Let\'s take some Quick Notes</string>
+    <string name="screen_two_text">Let\'s Have a quick setup first</string>
+    <string name="pin_edittext_hint">Pin</string>
+    <string name="login_button_text">Login</string>
 </resources>
